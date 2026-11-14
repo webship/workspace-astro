@@ -27,6 +27,15 @@
   "workspacePlugin": {
     "name": "astro",
     "label": "Astro",
+    "needs": [
+      [
+        "dev",
+        "test",
+        "sandboxes",
+        "demos"
+      ],
+      "ai-agents"
+    ],
     "commands": {
       "types": [
         "sites"
