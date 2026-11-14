@@ -1,0 +1,75 @@
+{
+  "name": "@webship.co/workspace-astro",
+  "version": "1.0.7",
+  "description": "Astro for Webship Workspace: the builder (`cmd-astro-project.sh`) and the Astro CLI tool in every sites folder, a template built with `astro build` and served with `astro preview` in a container, the Astro step pack wired into the testing setup, and two AI agents in the AI Agents folder.",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webship/workspace-astro.git"
+  },
+  "files": [
+    "dist/src",
+    "agents",
+    "commands",
+    "features",
+    "scripts",
+    "testing",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "workspacePlugin": {
+    "name": "astro",
+    "label": "Astro",
+    "commands": {
+      "types": [
+        "sites"
+      ],
+      "workspaces": [
+        "dev",
+        "test",
+        "sandboxes",
+        "demos"
+      ],
+      "files": [
+        "commands/cmd-astro-project.sh",
+        "commands/cmd-tools-astro-cli.sh"
+      ]
+    },
+    "scripts": {
+      "functions": [
+        "scripts/functions/fun-astro.sh"
+      ],
+      "args": [
+        "scripts/args/arg-astro.sh",
+        "scripts/args/arg-astro-cli.sh"
+      ],
+      "machine": [
+        "testing/site.feature"
+      ]
+    },
+    "ai": {
+      "agents": [
+        "agents/astro-site-builder.md",
+        "agents/astro-tester.md"
+      ]
+    },
+    "features": [
+      "features/astro.feature"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@webship.co/workspace-plugin-api": "^1.0.7",
+    "typescript": "^5.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
