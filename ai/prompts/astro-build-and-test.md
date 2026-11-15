@@ -1,5 +1,7 @@
 Make an Astro site from a template in a sites folder, serve its production build and prove it with its first webship-js feature.
 
+`claude` is the default launcher; the text between the triple quotes is plain and can be given to another AI CLI as it is.
+
 ```
 claude --permission-mode bypassPermissions """
 Build an Astro site named <name> in this sites folder and test it with webship-js
