@@ -86,8 +86,9 @@ service that has accounts, that service is tested with its own pack, on its own 
 - **No password and no secret in a feature file.**
 - **No platform name in a step phrase.** A step says what a person does or sees: `the site should
   be a production build`, `the sitemap should list "/"`, `I click the link "…" without a full
-  page reload`. The pack also has steps that name the generator of the page; a feature of yours
-  does not need them, and a custom step you write never names the product.
+  page reload`. The name of the generator is a value of a step, never a part of its phrase: `the
+  page generator should start with "Astro"`, `the page generator version should start with
+  "<version>"`. A custom step you write never names the product.
 - **No CSS selector in a scenario when a step of the pack says it.** `I should see an optimized
   image`, not a selector of the image wrapper.
 - **A custom step is the last resort.** Look in the pack and in webship-js first. If one is really

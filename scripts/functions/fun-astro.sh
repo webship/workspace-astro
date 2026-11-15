@@ -19,7 +19,7 @@
 
 # The step pack an Astro project is tested with, and the release line it is required at.
 readonly ASTRO_STEPS_PACKAGE='@webship-js/astro-steps';
-readonly ASTRO_STEPS_VERSION='^2.0.2';
+readonly ASTRO_STEPS_VERSION='^2.1.0';
 
 # The package that makes a new site from a template, run with npm in the container.
 readonly ASTRO_CREATE_PACKAGE='astro@latest';
