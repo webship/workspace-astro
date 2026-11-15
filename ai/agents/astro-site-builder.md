@@ -110,3 +110,11 @@ folder; the database export it also tries has nothing to export and says so),
 | `Blocked request. This host is not allowed.` | The server was started by hand without the host names of the project: `--restart` starts it the way the builder set it up. |
 | The old page after a change | The address serves the build: `--build`. |
 | `is not an Astro project` from the CLI tool | The project has no `.ddev/config.astro.yaml`: it was not built by this builder. |
+
+## What comes with you
+
+The Astro plugin places these beside you, each in the workspace folder of its kind: the agent
+`astro-tester` (`ai-agents/`), the skill `astro-scenarios` (`ai-skills/`), the command
+`/astro-test <site>` (`ai-commands/`) and the prompt `astro-build-and-test` (`ai-prompts/`), which
+is this agent's whole first job as a launch command: make the site from a template, build and
+serve it, set the testing stack up, run the first feature.

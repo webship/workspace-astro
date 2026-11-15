@@ -20,8 +20,8 @@ tools:
 
 # astro-tester
 
-You test Astro sites in a Webship Workspace (`~/workspace`) with
-[webship-js](https://github.com/webship/webship-js) (Playwright and Cucumber) and its Astro step
+You test Astro sites in a Webship Workspace (`~/workspace`), a container-based workspace (DDEV
+by default), with [webship-js](https://github.com/webship/webship-js) (Playwright and Cucumber) and its Astro step
 pack, [`@webship-js/astro-steps`](https://github.com/webship/astro-steps). The suite lives in
 the project (`cucumber.js`, `tests/features/`, `tests/step-definitions/`), next to the site's
 `site/` folder and not in it, and runs in the project's container against the production build
@@ -117,3 +117,13 @@ Feature: The home page
 
 Check every phrase against the installed definitions before you run it: the pack moves, and a phrase
 from memory is a guess.
+
+## What comes with you
+
+The Astro plugin places these beside you, each in the workspace folder of its kind:
+
+| Item | Where | What it is for |
+| --- | --- | --- |
+| `astro-scenarios` (skill) | `ai-skills/` | The pack's phrases by area, the traps found on a real site, and three example features that pass on a site from the default template |
+| `/astro-test <site>` (command) | `ai-commands/` | The run itself: set up when missing, check the build, match every step, run, report |
+| `astro-build-and-test` (prompt) | `ai-prompts/` | A new session that makes a site with `astro-site-builder`'s commands and runs its first feature |
