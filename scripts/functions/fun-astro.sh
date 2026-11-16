@@ -218,7 +218,10 @@ function astro_cli_tool() {
 
   if [ ! "${RUN}" == '_none_' ] ; then
     # Unquoted on purpose: --run "info --clipboard" is a command and its arguments.
-    astro_cli ${RUN} ;
+    # With its input closed: the dashboard runs this in a screen session, where the command has a
+    # terminal, and a command that ends with a question (astro info: "Copy to clipboard?") would
+    # stay there for ever. Without a terminal the question takes its default and the command ends.
+    astro_cli ${RUN} < /dev/null ;
     exit $? ;
   fi
 
