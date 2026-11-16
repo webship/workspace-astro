@@ -9,6 +9,7 @@ Build an Astro site named <name> in this sites folder and test it with webship-j
 # the builder deletes a project of the same name first: stop if <name> is a site somebody still needs
 # nothing on the host: no astro, node, npm or npx outside the site's container
 # a static site: no database and no accounts, and none is added to make a tool happy
+# a feature to write or a run to read: the book Automated Functional Testing Recipes first (its README.md, then the matching chapter), from .claude/automated-functional-testing-recipes/ in the project, ~/.claude/automated-functional-testing-recipes/ or https://github.com/webship/webship-js-ai-agent/tree/2.0.x/automated-functional-testing-recipes
 
 1. bash cmd-astro-project.sh <name> --install
    (add --template <blog|basics|minimal> for a template other than blog, the default)
