@@ -164,3 +164,15 @@ test('the first feature names no platform in a step, logs nobody in, and carries
   assert.doesNotMatch(feature, /should see "/, 'no copy of a template: the feature does not depend on what a page says');
   assert.doesNotMatch(feature, /navigation links should resolve|https?:\/\//, 'no scenario follows a link to another site');
 });
+
+test('--run gives the Astro CLI no input to wait for: a command that ends with a question still ends', () => {
+  const p = project('astro');
+  const log = path.join(p.root, 'ddev.log');
+  // ddev stands for a command that asks: it reads a line. What it could read is recorded.
+  const stub = `ddev() { case "$1" in describe) echo '"status":"running"' ;; exec) local answer="" ; read -r -t 2 answer ; echo "exec read:[$answer] <$*>" >> "$DDEV_LOG" ;; esac ; return 0 ; } ; `;
+  const r = spawnSync('bash', ['-c', `sleep() { :; }\nsource ${FUNCTIONS}\n${stub}PROJECT_NAME=site1 ; RUN="info" ; trim_project_name() { :; } ; astro_cli_tool`],
+    { encoding: 'utf8', input: 'yes\n', env: { ...process.env, WORKSPACE_ROOT: p.root, doc_name: 'dev', DDEV_LOG: log } });
+  assert.strictEqual(r.status, 0, r.stdout + r.stderr);
+  const ran = fs.readFileSync(log, 'utf8');
+  assert.match(ran, /exec read:\[\] <exec -d \/var\/www\/html\/site npx astro info>/, 'the answer typed at the terminal does not reach the command: its input is closed');
+});
